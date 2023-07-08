@@ -4,7 +4,7 @@ const infoDiv = document.getElementById("info");
 
 input.addEventListener(
     "focus",
-    (event) => {
+        (event) => {
         infoDiv.textContent = "Your name";
         event.target.style.display = "block";
         event.target.style.background = "pink";
@@ -26,28 +26,33 @@ let redirectUrl = "";
 
 btn1.addEventListener("click", () => {
     redirectUrl = prompt("Введіть посилання:");
-    if (btn1 === null) {
-    return "error";
-    }
-console.log("hello");
+        if (redirectUrl === null) {
+        return console.error("error");
+        }
 });
 
 btn2.addEventListener("click", function () {
     if (redirectUrl) {
-        redirectUrl = checkProtocol(redirectUrl);
-        window.location.href = redirectUrl;
+    redirectUrl = checkProtocol(redirectUrl);
+    window.location.href = redirectUrl;
     } else {
     alert("Посилання не введено!");
     }
 });
 
+btn1.addEventListener("click", (e) => {
+    if (div1.value !== input.value) {
+    e.preventDefault();
+    infoDiv.textContent = "Please enter the URL correctly";
+    }
+});
 function checkProtocol(url) {
     if (!/^https?:\/\//i.test(url)) {
     url = "http://" + url;
     }
     return url;
 }
-
+//
 let myUrl = "LesiaHumenna.com";
 myUrl = checkProtocol(myUrl);
 console.log(myUrl);
@@ -89,10 +94,10 @@ divRandom.appendChild(btn3);
 btn3.appendChild(div2);
 
 btn3.addEventListener("click", (event) => {
-  let numRand = Math.floor(Math.random() * img.length);
+    let numRand = Math.floor(Math.random() * img.length);
     let imgRand = img[numRand];
-        const imgEl = document.createElement("img");
-        imgEl.src = numRand;
-        div2.innerHTML = "";
-        div2.appendChild(imgEl);
+    const imgEl = document.createElement("img");
+    imgEl.src = imgRand;
+    div2.innerHTML = "";
+    div2.appendChild(imgEl);
 });
